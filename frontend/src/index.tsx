@@ -1,15 +1,36 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import { store } from './app/store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
+import {BrowserRouter,Switch, Route} from 'react-router-dom';
+import HomePage from './pages/HomePage';
+import 'primeicons/primeicons.css';
+import 'primereact/resources/themes/luna-blue/theme.css';
+import 'primereact/resources/primereact.css';
+import 'primeflex/primeflex.css';
+import HeaderBar from './components/HeaderBar';
+import TodoPage from './pages/TodoPage';
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <App />
+    <BrowserRouter>
+      <HeaderBar />
+        <div className="p-grid">
+          <div className="p-col-3" />
+          <div className="p-col-6">
+            
+              <Switch>
+                <Route exact path="/" component={HomePage}></Route>
+                <Route exact path="/todo" component={TodoPage}></Route>
+              </Switch>
+            
+          </div>
+          <div className="p-col-3" />
+        </div>
+        </BrowserRouter>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
