@@ -17,10 +17,16 @@ export default function TodoPage(){
         {id: '3',name:'Wed.'},
         {id: '4',name:'Thur.'}
     ];
+    const cardFooter = () => {
+        return (<span>
+            <Button className="p-button-success" label="Save" icon="pi pi-check"/>
+            <Button className="p-button-danger" label="Delete" icon="pi pi-trash"/>
+        </span>);
+    }
     const cardTemplate = (todoObject: todoBody) => {
         return (
         <div className="p-m-1">
-            <Card title={todoObject.name}>
+            <Card title={todoObject.name} footer={cardFooter}>
 
             </Card>
         </div>
@@ -39,7 +45,7 @@ export default function TodoPage(){
                 <Button label="Submit"></Button>
             </div>
         </div>
-        <div className="p-d-flex p-mt-2">
+        <div className="p-mt-2">
             {temArr.map((e)=>(cardTemplate(e)))}
         </div>
         </>
