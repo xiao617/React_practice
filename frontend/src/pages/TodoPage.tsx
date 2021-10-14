@@ -1,33 +1,44 @@
 import React,{useState,useEffect} from 'react';
-import 'primeicons/primeicons.css';
-import 'primereact/resources/themes/luna-blue/theme.css';
-import 'primereact/resources/primereact.css';
-import 'primeflex/primeflex.css';
+import "./../index.css";
 import {InputText} from 'primereact/inputtext';
 import {Button} from 'primereact/button'; 
 import {Card} from 'primereact/card';
-import { todoBody } from '../types/todoBody';
+import {Tag} from 'primereact/tag';
+import { TodoBody ,TodoStatus} from '../types/todo';
+import { confirmDialog } from 'primereact/confirmdialog'; 
 
 export default function TodoPage(){
     const [inputTodo,setInputTodo] = useState<string>("");
-    const [todolist,setTodolist] = useState<Array<todoBody>>([]);
-    const temArr: Array<todoBody> = [
-        {id: '1',name:'Mon.'},
-        {id: '2',name:'Tue.'},
-        {id: '3',name:'Wed.'},
-        {id: '4',name:'Thur.'}
+    const [todolist,setTodolist] = useState<Array<TodoBody>>([]);
+    const temArr: Array<TodoBody> = [
+        {id: '1',name:'Mon.',status: TodoStatus.NotStarted},
+        {id: '2',name:'Tue.',status:TodoStatus.NotStarted},
+        {id: '3',name:'Wed.',status:TodoStatus.NotStarted},
+        {id: '4',name:'Thur.',status:TodoStatus.NotStarted}
     ];
+    const confirmUpdateStatus = () => {
+
+    }
+    const notStartTag = () => {
+        return (<Tag value="Not Started"></Tag>);
+    }
+    const processTag = () => {
+        return (<Tag value="Process" severity="warning"></Tag>);
+    }
     const cardFooter = () => {
         return (<span>
-            <Button className="p-button-success" label="Save" icon="pi pi-check"/>
-            <Button className="p-button-danger" label="Delete" icon="pi pi-trash"/>
+            <Button className="p-button-success p-m-1" label="Start" icon="pi pi-play"/>
+            <Button className="p-button-danger p-m-1" label="Delete" icon="pi pi-trash"/>
         </span>);
     }
-    const cardTemplate = (todoObject: todoBody) => {
+    const cardTemplate = (todoObject: TodoBody) => {
         return (
-        <div className="p-m-1">
+        <div className="p-d-flex p-m-1 p-col-6">
             <Card title={todoObject.name} footer={cardFooter}>
-
+                <div className="p-text-right" >
+                {todoObject.status === TodoStatus.NotStarted?notStartTag():processTag()}
+                </div>
+                
             </Card>
         </div>
         );

@@ -1,15 +1,15 @@
 import { createServer, Factory, Model } from "miragejs";
-import { todoBody } from "../types/todoBody";
+import { TodoBody } from "../types/todo";
 import faker from "faker";
 
 export function MockServer({ environment = "development" }) {
   return createServer({
     environment,
     models: {
-      todo: Model.extend<Partial<todoBody>>({})
+      todo: Model.extend<Partial<TodoBody>>({})
     },
     factories: {
-      todo: Factory.extend<Partial<todoBody>>({
+      todo: Factory.extend<Partial<TodoBody>>({
         get name() {
           //console.log(this.id)
           //faker.seed(Number(this.id))
