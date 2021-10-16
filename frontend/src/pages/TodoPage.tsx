@@ -6,18 +6,64 @@ import {Card} from 'primereact/card';
 import {Tag} from 'primereact/tag';
 import { TodoBody ,TodoStatus} from '../types/todo';
 import { confirmDialog } from 'primereact/confirmdialog'; 
+import { NodeService } from '../services/NodeService';
 
 export default function TodoPage(){
     const [inputTodo,setInputTodo] = useState<string>("");
     const [todolist,setTodolist] = useState<Array<TodoBody>>([]);
-    const temArr: Array<TodoBody> = [
-        {id: '1',name:'Mon.',status: TodoStatus.NotStarted},
-        {id: '2',name:'Tue.',status:TodoStatus.NotStarted},
-        {id: '3',name:'Wed.',status:TodoStatus.NotStarted},
-        {id: '4',name:'Thur.',status:TodoStatus.NotStarted}
-    ];
-    const confirmUpdateStatus = () => {
-
+    const nodeService = new NodeService();
+    // const temArr: Array<TodoBody> = [
+    //     {id: '1',name:'Mon.',status: TodoStatus.NotStarted},
+    //     {id: '2',name:'Tue.',status:TodoStatus.NotStarted},
+    //     {id: '3',name:'Wed.',status:TodoStatus.NotStarted},
+    //     {id: '4',name:'Thur.',status:TodoStatus.NotStarted}
+    // ];
+    
+    useEffect(()=> {
+        getTodos();
+    },[])
+    const getTodos = async() =>{
+        await nodeService.getTodo().then((res)=>(setTodolist(res.data.todos)));
+    } 
+    const createTodo = async() => {
+        await nodeService.postTodo({name:inputTodo,status:TodoStatus.NotStarted}).then((res)=>(setTodolist(res.data.todos)))
+    }
+    const acceptUpdateStatus = async(todoObject:TodoBody) => {
+        if(todoObject.id !== undefined)
+        {
+            await nodeService.putTodo({id:todoObject.id,name:todoObject.name,status:TodoStatus.Process}).then((res)=>(setTodolist(res.data.todos)));
+        }
+        
+        console.log(todoObject)
+    }
+    const acceptDeleteTodo = async(todoObject:TodoBody) => {
+        await nodeService.deleteTodo(todoObject).then((res)=>(setTodolist(res.data.todos)))
+        console.log(todoObject)
+    }
+    const rejectUpdateStatus = (todoObject:TodoBody) => {
+        
+        console.log(todoObject)
+        console.log('Cancel update status')
+    }
+    const rejectDeleteTodo = (todoObject:TodoBody) => {
+        console.log(todoObject)
+        console.log('Cancel delete todo')
+    }
+    const confirmUpdateStatus = (todoObject:TodoBody) => {
+        return (confirmDialog({
+            message: 'Do you want to process this todo item?',
+            header: 'Process Todo',
+            accept:()=>acceptUpdateStatus(todoObject),
+            reject:()=>rejectUpdateStatus(todoObject)
+        }));
+    }
+    const confirmDeleteTodo = (todoObject:TodoBody) => {
+        return (confirmDialog({
+            message: 'Do you want to Delete this todo item?',
+            header: 'Delete Todo',
+            accept: ()=>acceptDeleteTodo(todoObject),
+            reject:()=>rejectDeleteTodo(todoObject)
+        }));
     }
     const notStartTag = () => {
         return (<Tag value="Not Started"></Tag>);
@@ -25,16 +71,16 @@ export default function TodoPage(){
     const processTag = () => {
         return (<Tag value="Process" severity="warning"></Tag>);
     }
-    const cardFooter = () => {
+    const cardFooter = (todoObject: TodoBody) => {
         return (<span>
-            <Button className="p-button-success p-m-1" label="Start" icon="pi pi-play"/>
-            <Button className="p-button-danger p-m-1" label="Delete" icon="pi pi-trash"/>
+            <Button className="p-button-success p-m-1" label="Start" icon="pi pi-play" onClick={() => confirmUpdateStatus(todoObject)}/>
+            <Button className="p-button-danger p-m-1" label="Delete" icon="pi pi-trash" onClick={() => confirmDeleteTodo(todoObject)} />
         </span>);
     }
     const cardTemplate = (todoObject: TodoBody) => {
         return (
         <div className="p-d-flex p-m-1 p-col-6">
-            <Card title={todoObject.name} footer={cardFooter}>
+            <Card title={todoObject.name} footer={cardFooter(todoObject)}>
                 <div className="p-text-right" >
                 {todoObject.status === TodoStatus.NotStarted?notStartTag():processTag()}
                 </div>
@@ -53,11 +99,11 @@ export default function TodoPage(){
                 </span>
             </div>
             <div className="p-mb-2 p-m-1">
-                <Button label="Submit"></Button>
+                <Button label="Submit" onClick={()=>(createTodo())}></Button>
             </div>
         </div>
         <div className="p-mt-2">
-            {temArr.map((e)=>(cardTemplate(e)))}
+            {todolist.map((e)=>(cardTemplate(e)))}
         </div>
         </>
     )

@@ -12,6 +12,13 @@ import 'primereact/resources/primereact.css';
 import 'primeflex/primeflex.css';
 import HeaderBar from './components/HeaderBar';
 import TodoPage from './pages/TodoPage';
+import { MockServer } from './services/MockServer';
+
+const environment = process.env.NODE_ENV;
+
+if (environment !== 'production') {
+  MockServer({environment});
+}
 
 ReactDOM.render(
   <React.StrictMode>
