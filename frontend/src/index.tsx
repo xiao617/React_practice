@@ -13,6 +13,8 @@ import 'primeflex/primeflex.css';
 import HeaderBar from './components/HeaderBar';
 import TodoPage from './pages/TodoPage';
 import { MockServer } from './services/MockServer';
+import {Messages} from 'primereact/messages';
+import {Message} from 'primereact/message';
 
 const environment = process.env.NODE_ENV;
 

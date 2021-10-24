@@ -1,0 +1,163 @@
+openapi: 3.0.0
+info:
+  title: API spec of X
+  description: Some API spec of x for handling data transfer between frontend and backend
+  version: 0.0.6
+servers:
+  - url: http://localhost:8888/v1
+    description: API endpoint of backend
+paths:
+  /todos:
+    get:
+      tags:
+        - todos
+      summary: Get all todos from database
+      description: Get all todos from database
+      responses:
+        '200':
+          description: Array of todo object
+          content:
+            application/json:
+                schema:
+                  $ref: "#/components/schemas/Todo"
+    post:
+      tags:
+        - todos
+      summary: Create a todo item
+      description: Create a todo item to database
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Todo"
+      responses:
+        "200":
+          description: Create todo success and return all todos in database
+          content:
+            application/json:
+                schema:
+                  $ref: "#/components/schemas/Todo"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/responses/BadRequest"
+  /todos/{todoId}:
+    delete:
+      tags:
+        - todos
+      summary: delete specific Todo
+      description: delete specific Todo based on todoId 
+      parameters:
+        - in: path
+          name: todoId
+          schema:
+            type: string
+          required: true
+          description: The ID of the Todo
+      responses:
+        "200":
+          description: delete success and return todos in database
+          content:
+            application/json:
+                schema:
+                  $ref: "#/components/schemas/Todo"
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/responses/NotFound"
+    put:
+      tags:
+        - todos
+      summary: update todo infos
+      description: update todo infos 
+      parameters:
+        - in: path
+          name: todoId
+          schema:
+            type: string
+          required: true
+          description: The ID of the Todo
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Todo"
+      responses:
+        "200":
+          description: update operation success and return todos in database
+          content:
+            application/json:
+                schema:
+                  $ref: "#/components/schemas/Todo"
+        "400":
+          description: Bad Request
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/responses/BadRequest"
+        "404":
+          description: Not Found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/responses/NotFound"
+components:
+  schemas:
+    Todo:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The ID of this Todo
+        name:
+          type: string
+          description: The title of this AAPI, ps
+        status:
+          type: string
+          description: The description of this AAPI
+        createdAt:
+          type: string
+          format: date-time
+          description: create time of this AAPI
+          example: "2021-06-08T07:17:40.541Z"
+        updatedAt:
+          type: string
+          format: date-time
+          description: update time of this AAPI
+          example: "2021-06-08T07:17:40.541Z"
+      required:
+        - name, status
+    Error:
+      type: object
+      properties:
+        code:
+          type: integer
+        msg:
+          type: string
+      required:
+        - code
+        - msg
+  responses:
+    BadRequest:
+      description: Request is invalid (include invalid JSON data or invalid fields)
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    NotFound:
+      description: The specified resource was not found
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    Unauthorized:
+      description: Unauthorized
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
