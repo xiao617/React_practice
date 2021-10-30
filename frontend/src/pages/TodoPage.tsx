@@ -1,5 +1,7 @@
-import React,{useState,useEffect} from 'react';
+import React,{useState,useEffect, useRef} from 'react';
 import "./../index.css";
+import { useAppDispatch, useAppSelector } from "../app/hooks";
+import { selectUser, userBody, userLogin } from "../features/user/userSlice";
 import {InputText} from 'primereact/inputtext';
 import {Button} from 'primereact/button'; 
 import {Card} from 'primereact/card';
@@ -8,9 +10,13 @@ import { TodoBody ,TodoStatus} from '../types/todo';
 import { confirmDialog } from 'primereact/confirmdialog'; 
 import { NodeService } from '../services/NodeService';
 
+
 export default function TodoPage(){
+    const dispatch = useAppDispatch();
+    const user = useAppSelector(selectUser);
     const [inputTodo,setInputTodo] = useState<string>("");
     const [todolist,setTodolist] = useState<Array<TodoBody>>([]);
+    
     const nodeService = new NodeService();
     // const temArr: Array<TodoBody> = [
     //     {id: '1',name:'Mon.',status: TodoStatus.NotStarted},
@@ -79,7 +85,7 @@ export default function TodoPage(){
     }
     const cardTemplate = (todoObject: TodoBody) => {
         return (
-        <div className="p-d-flex p-m-1 p-col-6">
+        <div className="p-d-flex p-m-1 p-col-6" key={todoObject.id}>
             <Card title={todoObject.name} footer={cardFooter(todoObject)}>
                 <div className="p-text-right" >
                 {todoObject.status === TodoStatus.NotStarted?notStartTag():processTag()}
@@ -91,7 +97,9 @@ export default function TodoPage(){
     }
     return(
         <>
+        <h3>hello, {user.name}</h3>
         <div className="p-d-inline-flex p-mt-6">
+        
             <div className="p-mb-2 p-m-1">
                 <span className="p-float-label">
                     <InputText id="inTodo" value={inputTodo} onChange={(e) => setInputTodo(e.target.value)}/>

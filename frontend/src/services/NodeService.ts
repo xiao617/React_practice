@@ -1,9 +1,8 @@
 import axios, {AxiosResponse} from 'axios';
-import TodoPage from '../pages/TodoPage';
 import { TodoBody,TodoResponse } from '../types/todo';
 
 export class NodeService{
-    async getTodo(){
+    async getTodo():Promise<AxiosResponse<TodoResponse>>{
         //Read
         try{
             const res = await axios.get<TodoResponse>('/todos');
@@ -13,7 +12,7 @@ export class NodeService{
             return Promise.reject(`${err}`)
         }
     }
-    async postTodo(todoObject:TodoBody){
+    async postTodo(todoObject:TodoBody):Promise<AxiosResponse<TodoResponse>>{
         //Create 
         try{
             const res = await axios.post<TodoResponse>('/todos',todoObject);
@@ -23,7 +22,7 @@ export class NodeService{
             return Promise.reject(`${err}`);
         }
     }
-    async putTodo(todoObject: TodoBody){
+    async putTodo(todoObject: TodoBody):Promise<AxiosResponse<TodoResponse>>{
         //Update
         try{
             const res = await axios.put<TodoResponse>(`/todos/${todoObject.id}`,todoObject);
@@ -33,7 +32,7 @@ export class NodeService{
             return Promise.reject(`${err}`);
         }
     }
-    async deleteTodo(todoObject: TodoBody){
+    async deleteTodo(todoObject: TodoBody):Promise<AxiosResponse<TodoResponse>>{
         //Delete
         try{
             const res = await axios.delete<TodoResponse>(`/todos/${todoObject.id}`);

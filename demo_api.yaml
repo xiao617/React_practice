@@ -19,7 +19,9 @@ paths:
           content:
             application/json:
                 schema:
-                  $ref: "#/components/schemas/Todo"
+                  type: array
+                  items: 
+                    $ref: "#/components/schemas/Todo"
     post:
       tags:
         - todos
@@ -37,7 +39,9 @@ paths:
           content:
             application/json:
                 schema:
-                  $ref: "#/components/schemas/Todo"
+                  type: array
+                  items:
+                    $ref: "#/components/schemas/Todo"
         "400":
           description: Bad Request
           content:
@@ -63,7 +67,9 @@ paths:
           content:
             application/json:
                 schema:
-                  $ref: "#/components/schemas/Todo"
+                  type: array
+                  items:
+                    $ref: "#/components/schemas/Todo"
         "404":
           description: Not Found
           content:
@@ -93,7 +99,9 @@ paths:
           content:
             application/json:
                 schema:
-                  $ref: "#/components/schemas/Todo"
+                  type: array
+                  items:
+                    $ref: "#/components/schemas/Todo"
         "400":
           description: Bad Request
           content:
@@ -116,22 +124,13 @@ components:
           description: The ID of this Todo
         name:
           type: string
-          description: The title of this AAPI, ps
+          description: The title of this todo item
         status:
           type: string
-          description: The description of this AAPI
-        createdAt:
-          type: string
-          format: date-time
-          description: create time of this AAPI
-          example: "2021-06-08T07:17:40.541Z"
-        updatedAt:
-          type: string
-          format: date-time
-          description: update time of this AAPI
-          example: "2021-06-08T07:17:40.541Z"
+          description: The status of todo item
       required:
-        - name, status
+        - name
+        - status
     Error:
       type: object
       properties:

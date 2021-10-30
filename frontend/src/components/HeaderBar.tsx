@@ -1,20 +1,22 @@
 import React from "react";
-import 'primeicons/primeicons.css';
-import 'primereact/resources/themes/luna-blue/theme.css';
-import 'primereact/resources/primereact.css';
-import 'primeflex/primeflex.css';
+import "./../index.css";
 import {Menubar} from 'primereact/menubar';
-import {Link} from 'react-router-dom';
+import { useHistory} from 'react-router-dom';
+
 
 export default function HeaderBar(){
+    let history = useHistory();
     
     const items = [
         {
-            label: "Home"
+            label: "Home",
+            command:() => (history.push("/"))
         },
         {
             label: 'Todo',
-            url: '/todo'
+            command:() => (
+                history.push("/todo")
+            )
         }
     ]
     return (

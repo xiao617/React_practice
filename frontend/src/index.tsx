@@ -6,15 +6,10 @@ import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
 import {BrowserRouter,Switch, Route} from 'react-router-dom';
 import HomePage from './pages/HomePage';
-import 'primeicons/primeicons.css';
-import 'primereact/resources/themes/luna-blue/theme.css';
-import 'primereact/resources/primereact.css';
-import 'primeflex/primeflex.css';
 import HeaderBar from './components/HeaderBar';
 import TodoPage from './pages/TodoPage';
 import { MockServer } from './services/MockServer';
-import {Messages} from 'primereact/messages';
-import {Message} from 'primereact/message';
+
 
 const environment = process.env.NODE_ENV;
 
