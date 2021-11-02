@@ -7,14 +7,11 @@ import * as serviceWorker from './serviceWorker';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import HeaderBar from './components/HeaderBar';
-import TodoPage from './pages/TodoPage';
-import { MockServer } from './services/MockServer';
+
 
 const environment = process.env.NODE_ENV;
 
-if (environment !== 'production') {
-  MockServer({ environment });
-}
+
 
 ReactDOM.render(
   <React.StrictMode>
@@ -26,7 +23,7 @@ ReactDOM.render(
           <div className="p-col-6">
             <Switch>
               <Route exact path="/" component={HomePage}></Route>
-              <Route exact path="/todo" component={TodoPage}></Route>
+
             </Switch>
           </div>
           <div className="p-col-3" />

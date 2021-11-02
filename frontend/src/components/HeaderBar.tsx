@@ -10,11 +10,7 @@ export default function HeaderBar() {
     {
       label: 'Home',
       command: () => history.push('/'),
-    },
-    {
-      label: 'Todo',
-      command: () => history.push('/todo'),
-    },
+    }
   ];
   return (
     <>
