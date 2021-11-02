@@ -4,37 +4,34 @@ import './index.css';
 import { store } from './app/store';
 import { Provider } from 'react-redux';
 import * as serviceWorker from './serviceWorker';
-import {BrowserRouter,Switch, Route} from 'react-router-dom';
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import HeaderBar from './components/HeaderBar';
 import TodoPage from './pages/TodoPage';
 import { MockServer } from './services/MockServer';
 
-
 const environment = process.env.NODE_ENV;
 
 if (environment !== 'production') {
-  MockServer({environment});
+  MockServer({ environment });
 }
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-    <BrowserRouter>
-      <HeaderBar />
+      <BrowserRouter>
+        <HeaderBar />
         <div className="p-grid">
           <div className="p-col-3" />
           <div className="p-col-6">
-            
-              <Switch>
-                <Route exact path="/" component={HomePage}></Route>
-                <Route exact path="/todo" component={TodoPage}></Route>
-              </Switch>
-            
+            <Switch>
+              <Route exact path="/" component={HomePage}></Route>
+              <Route exact path="/todo" component={TodoPage}></Route>
+            </Switch>
           </div>
           <div className="p-col-3" />
         </div>
-        </BrowserRouter>
+      </BrowserRouter>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
