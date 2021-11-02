@@ -4,6 +4,9 @@ https://github.com/xiao617/React_slide
 
 Clone project to local directory and open export/index.html
 
+## breakdown link
+https://github.com/xiao617/React_practice_breakdown
+
 ## Setup project
 ### step 1.
 Move to frontend directory
