@@ -8,7 +8,7 @@ export interface UserState {
 }
 export type userBody = {
   name: string;
-  _id?: string;
+  id?: string;
   score: number;
   status: string;
 };
@@ -24,7 +24,7 @@ export const userSlice = createSlice({
   initialState,
   reducers: {
     userLogin: (state, action: PayloadAction<userBody>) => {
-      state.id = action.payload._id ?? '';
+      state.id = action.payload.id ?? '';
       state.name = action.payload.name;
       state.status = 'user';
       state.score = 0;
