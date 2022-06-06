@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="4.9640" tests="3" failures="0">
+  <testsuite name="Root Suite" timestamp="2022-05-17T07:10:07" tests="0" file="cypress/integration/todo.spec.js" time="0.0000" failures="0">
+  </testsuite>
+  <testsuite name="My First Test" timestamp="2022-05-17T07:10:07" tests="3" time="4.9640" failures="0">
+    <testcase name="My First Test Visits todo page" time="3.4590" classname="Visits todo page">
+    </testcase>
+    <testcase name="My First Test Header Bar" time="1.4700" classname="Header Bar">
+    </testcase>
+    <testcase name="My First Test check mock server" time="0.0350" classname="check mock server">
+    </testcase>
+  </testsuite>
+</testsuites>

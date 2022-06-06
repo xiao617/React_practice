@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="0.0000" tests="1" failures="1">
+  <testsuite name="Root Suite" timestamp="2022-05-23T01:19:50" tests="0" file="cypress/integration/out.spec.ts" time="0.0000" failures="0">
+  </testsuite>
+  <testsuite name="My First Test" timestamp="2022-05-23T01:19:50" tests="1" time="0.0000" failures="1">
+    <testcase name="My First Test &quot;after each&quot; hook for &quot;Visits todo page&quot;" time="0.0000" classname="&quot;after each&quot; hook for &quot;Visits todo page&quot;">
+      <failure message="`cy.visit()` failed because you are attempting to visit a URL that is of a different origin.
+
+The new URL is considered a different origin because the following parts of the URL are different:
+
+  &gt; protocol, port, superdomain
+
+You may only `cy.visit()` same-origin URLs within a single test.
+
+The previous URL you visited was:
+
+  &gt; &apos;https://popcat.games&apos;
+
+You&apos;re attempting to visit this URL:
+
+  &gt; &apos;http://localhost:3000&apos;
+
+You may need to restructure some of your test code to avoid this problem.
+
+https://on.cypress.io/cannot-visit-different-origin-domain
+
+Because this error occurred during a `after each` hook we are skipping the remaining tests in the current suite: `My First Test`" type="CypressError"><![CDATA[CypressError: `cy.visit()` failed because you are attempting to visit a URL that is of a different origin.
+
+The new URL is considered a different origin because the following parts of the URL are different:
+
+  > protocol, port, superdomain
+
+You may only `cy.visit()` same-origin URLs within a single test.
+
+The previous URL you visited was:
+
+  > 'https://popcat.games'
+
+You're attempting to visit this URL:
+
+  > 'http://localhost:3000'
+
+You may need to restructure some of your test code to avoid this problem.
+
+https://on.cypress.io/cannot-visit-different-origin-domain
+
+Because this error occurred during a `after each` hook we are skipping the remaining tests in the current suite: `My First Test`
+    at cannotVisitDifferentOrigin (https://popcat.games/__cypress/runner/cypress_runner.js:158340:72)
+    at go (https://popcat.games/__cypress/runner/cypress_runner.js:159167:18)
+    at visit (https://popcat.games/__cypress/runner/cypress_runner.js:159357:16)
+    at Context.visit (https://popcat.games/__cypress/runner/cypress_runner.js:159360:14)
+From Your Spec Code:
+    at Context.eval (https://popcat.games/__cypress/tests?p=cypress/integration/out.spec.ts:100:12)]]></failure>
+    </testcase>
+  </testsuite>
+</testsuites>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="3.7620" tests="2" failures="1">
+  <testsuite name="Root Suite" timestamp="2022-04-19T03:13:58" tests="0" file="cypress/integration/todo.spec.js" time="0.0000" failures="0">
+  </testsuite>
+  <testsuite name="todo test" timestamp="2022-04-19T03:13:58" tests="2" time="3.7620" failures="1">
+    <testcase name="todo test check home" time="3.7620" classname="check home">
+    </testcase>
+    <testcase name="todo test test api" time="0.0000" classname="test api">
+      <failure message="Cannot read properties of undefined (reading &apos;todos&apos;)" type="TypeError"><![CDATA[TypeError: Cannot read properties of undefined (reading 'todos')
+    at Context.eval (http://localhost:3000/__cypress/tests?p=cypress/integration/todo.spec.js:112:28)]]></failure>
+    </testcase>
+  </testsuite>
+</testsuites>

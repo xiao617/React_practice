@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="0.0000" tests="1" failures="1">
+  <testsuite name="Root Suite" timestamp="2022-05-18T01:28:11" tests="0" file="cypress/integration/out.spec.ts" time="0.0000" failures="0">
+  </testsuite>
+  <testsuite name="My First Test" timestamp="2022-05-18T01:28:12" tests="1" time="0.0000" failures="1">
+    <testcase name="My First Test Visits todo page" time="0.0000" classname="Visits todo page">
+      <failure message="`cy.visit()` failed trying to load:
+
+http://popcat.click/
+
+The response we received from your web server was:
+
+  &gt; 403: Forbidden
+
+This was considered a failure because the status code was not `2xx`.
+
+This http request was redirected &apos;1&apos; time to:
+
+  - 301: https://popcat.click/
+
+If you do not want status codes to cause failures pass the option: `failOnStatusCode: false`" type="CypressError"><![CDATA[CypressError: `cy.visit()` failed trying to load:
+
+http://popcat.click/
+
+The response we received from your web server was:
+
+  > 403: Forbidden
+
+This was considered a failure because the status code was not `2xx`.
+
+This http request was redirected '1' time to:
+
+  - 301: https://popcat.click/
+
+If you do not want status codes to cause failures pass the option: `failOnStatusCode: false`
+    at https://popcat.click/__cypress/runner/cypress_runner.js:159309:84
+    at visitFailedByErr (https://popcat.click/__cypress/runner/cypress_runner.js:158675:12)
+    at https://popcat.click/__cypress/runner/cypress_runner.js:159289:13
+    at tryCatcher (https://popcat.click/__cypress/runner/cypress_runner.js:13022:23)
+    at Promise._settlePromiseFromHandler (https://popcat.click/__cypress/runner/cypress_runner.js:10957:31)
+    at Promise._settlePromise (https://popcat.click/__cypress/runner/cypress_runner.js:11014:18)
+    at Promise._settlePromise0 (https://popcat.click/__cypress/runner/cypress_runner.js:11059:10)
+    at Promise._settlePromises (https://popcat.click/__cypress/runner/cypress_runner.js:11135:18)
+    at _drainQueueStep (https://popcat.click/__cypress/runner/cypress_runner.js:7729:12)
+    at _drainQueue (https://popcat.click/__cypress/runner/cypress_runner.js:7722:9)
+    at Async.../../node_modules/bluebird/js/release/async.js.Async._drainQueues (https://popcat.click/__cypress/runner/cypress_runner.js:7738:5)
+    at Async.drainQueues (https://popcat.click/__cypress/runner/cypress_runner.js:7608:14)
+From Your Spec Code:
+    at Context.eval (https://popcat.click/__cypress/tests?p=cypress/integration/out.spec.ts:102:12)]]></failure>
+    </testcase>
+  </testsuite>
+</testsuites>

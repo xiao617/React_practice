@@ -23,10 +23,10 @@ export function MockServer({ environment = 'development' }) {
     seeds(server) {
       //server.schema.create('todo',{ name: "Go to Market" });
       //server.create("todo", { name: "Buy Cookies" });
-      server.createList('todo', 3);
+      server.createList('todo', 1);
     },
     routes() {
-      //this.urlPrefix = "https://sd8zp.csb.app/";
+      this.urlPrefix = "/api/v1";
       this.get('/todos', (schema, request) => {
         return schema.all('todo');
       });

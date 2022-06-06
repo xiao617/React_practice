@@ -5,7 +5,7 @@ export class NodeService {
   async getTodo(): Promise<AxiosResponse<TodoResponse>> {
     //Read
     try {
-      const res = await axios.get<TodoResponse>('/todos');
+      const res = await axios.get<TodoResponse>('/api/v1/todos');
       return Promise.resolve(res);
     } catch (err) {
       return Promise.reject(`${err}`);
@@ -14,7 +14,7 @@ export class NodeService {
   async postTodo(todoObject: TodoBody): Promise<AxiosResponse<TodoResponse>> {
     //Create
     try {
-      const res = await axios.post<TodoResponse>('/todos', todoObject);
+      const res = await axios.post<TodoResponse>('/api/v1/todos', todoObject);
       return Promise.resolve(res);
     } catch (err) {
       return Promise.reject(`${err}`);
@@ -23,7 +23,7 @@ export class NodeService {
   async putTodo(todoObject: TodoBody): Promise<AxiosResponse<TodoResponse>> {
     //Update
     try {
-      const res = await axios.put<TodoResponse>(`/todos/${todoObject.id}`, todoObject);
+      const res = await axios.put<TodoResponse>(`/api/v1/todos/${todoObject.id}`, todoObject);
       return Promise.resolve(res);
     } catch (err) {
       return Promise.reject(`${err}`);
@@ -32,7 +32,7 @@ export class NodeService {
   async deleteTodo(todoObject: TodoBody): Promise<AxiosResponse<TodoResponse>> {
     //Delete
     try {
-      const res = await axios.delete<TodoResponse>(`/todos/${todoObject.id}`);
+      const res = await axios.delete<TodoResponse>(`/api/v1/todos/${todoObject.id}`);
       return Promise.resolve(res);
     } catch (err) {
       return Promise.reject(`${err}`);

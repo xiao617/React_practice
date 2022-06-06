@@ -31,10 +31,14 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start:dev": "react-scripts -r @cypress/instrument-cra start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "fix-prettier": "prettier --write \"./{src,test}/**/*.{ts,tsx,json}\""
+    "fix-prettier": "prettier --write \"./{src,test}/**/*.{ts,tsx,json}\"",
+    "cy:run": "cypress run",
+    "cy:open": "cypress open",
+    "ci:test": "start-server-and-test start:dev http://localhost:3000 cy:run"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -50,5 +54,32 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "nyc": {
+    "all": true,
+    "include": [
+      "src/app/*.ts",
+      "src/components/*.tsx",
+      "src/pages/*.tsx",
+      "src/redux/*.tsx",
+      "src/routes/*.js",
+      "src/service/*.tsx",
+      "src/*.tsx"
+    ],
+    "exclude": [
+      "src/service/MockServer.tsx"
+    ]
+  },
+  "devDependencies": {
+    "@cypress/code-coverage": "^3.9.12",
+    "@cypress/instrument-cra": "^1.4.0",
+    "@istanbuljs/nyc-config-typescript": "^1.0.2",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "cypress": "^9.5.4",
+    "istanbul-lib-coverage": "^3.2.0",
+    "nyc": "^15.1.0",
+    "source-map-support": "^0.5.21",
+    "start-server-and-test": "^1.14.0",
+    "ts-node": "^10.7.0"
   }
 }

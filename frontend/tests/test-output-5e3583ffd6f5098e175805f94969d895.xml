@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="Mocha Tests" time="0.0000" tests="3" failures="2">
+  <testsuite name="Root Suite" timestamp="2022-05-17T06:57:08" tests="0" file="cypress/integration/todo.spec.ts" time="0.0000" failures="0">
+  </testsuite>
+  <testsuite name="My First Test" timestamp="2022-05-17T06:57:09" tests="3" time="0.0000" failures="2">
+    <testcase name="My First Test &quot;before each&quot; hook for &quot;Visits todo page&quot;" time="0.0000" classname="&quot;before each&quot; hook for &quot;Visits todo page&quot;">
+      <failure message="Cannot read properties of undefined (reading &apos;music&apos;)
+
+Because this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `My First Test`" type="TypeError"><![CDATA[TypeError: Cannot read properties of undefined (reading 'music')
+
+Because this error occurred during a `before each` hook we are skipping the remaining tests in the current suite: `My First Test`
+    at Object.get name [as name] (http://localhost:3000/__cypress/tests?p=cypress/integration/todo.spec.ts:184426:59)
+    at Function.assign (<anonymous>)
+    at Function../node_modules/miragejs/dist/mirage-esm.js.Factory.extend (http://localhost:3000/__cypress/tests?p=cypress/integration/todo.spec.ts:173747:25)
+    at Object.MockServer (http://localhost:3000/__cypress/tests?p=cypress/integration/todo.spec.ts:184422:38)
+    at Context.eval (http://localhost:3000/__cypress/tests?p=cypress/integration/todo.spec.ts:167:31)]]></failure>
+    </testcase>
+    <testcase name="My First Test &quot;after each&quot; hook for &quot;Visits todo page&quot;" time="0.0000" classname="&quot;after each&quot; hook for &quot;Visits todo page&quot;">
+      <failure message="Cannot read properties of undefined (reading &apos;shutdown&apos;)
+
+Because this error occurred during a `after each` hook we are skipping the remaining tests in the current suite: `My First Test`" type="TypeError"><![CDATA[TypeError: Cannot read properties of undefined (reading 'shutdown')
+
+Because this error occurred during a `after each` hook we are skipping the remaining tests in the current suite: `My First Test`
+    at Context.eval (http://localhost:3000/__cypress/tests?p=cypress/integration/todo.spec.ts:170:16)]]></failure>
+    </testcase>
+  </testsuite>
+</testsuites>
