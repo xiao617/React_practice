@@ -9,6 +9,7 @@ import HomePage from './pages/HomePage';
 import HeaderBar from './components/HeaderBar';
 import TodoPage from './pages/TodoPage';
 import { MockServer } from './services/MockServer';
+import './services/LanguageService';
 
 const environment = process.env.NODE_ENV;
 
