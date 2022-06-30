@@ -18,9 +18,12 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx"
+    "jsx": "react-jsx",
+    "typeRoots": ["./node_modules/@types"],
+    "types": ["node","cypress"]
   },
   "include": [
     "src"
-, "src/react-i18next.d.ts"  ]
+, "src/react-i18next.d.ts" ,
+"./cypress.d.ts" ]
 }
