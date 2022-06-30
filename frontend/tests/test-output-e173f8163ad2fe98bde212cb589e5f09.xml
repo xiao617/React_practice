@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<testsuites name="Mocha Tests" time="0.6880" tests="1" failures="0">
-  <testsuite name="Root Suite" timestamp="2022-06-29T03:21:52" tests="0" file="cypress/integration/todo.cy.ts" time="0.0000" failures="0">
-  </testsuite>
-  <testsuite name="todo test" timestamp="2022-06-29T03:21:52" tests="1" time="0.6880" failures="0">
-    <testcase name="todo test check home" time="0.6880" classname="check home">
-    </testcase>
-  </testsuite>
-</testsuites>
